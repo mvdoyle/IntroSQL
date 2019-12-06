@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Extensions.Configuration;
 
 namespace IntroSQL
@@ -14,7 +15,30 @@ namespace IntroSQL
 
             string connString = config.GetConnectionString("DefaultConnection");
 
-            Console.WriteLine("hello");
+            var repo = new DepartmentRepository(connString);
+
+            var departments = repo.GetAllDepartments();
+
+            foreach(var dept in departments)
+            {
+                Console.WriteLine(dept.Name);
+            }
+
+            Console.WriteLine("Would you like to do?");
+            var response = "";
+
+            do
+            {
+                Console.WriteLine("Please type one of the following choices:");
+                Console.Write("||Insert | Update | Delete || Departments");
+                response = Console.ReadLine();
+
+            } while (response.ToUpper() != "INSERT" || response.ToUpper() != "UPDATE" || response.ToUpper() != "DELETE");
+
+            if(response == "INSERT")
+            {
+
+            }
         }
     }
 }
