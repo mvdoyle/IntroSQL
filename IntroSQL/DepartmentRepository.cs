@@ -63,5 +63,18 @@ namespace IntroSQL
             }
         }
 
+        public void InsertDepartment(string departmentName)
+        {
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "INSERT INTO DEPARTMENTS (Name) VALUES (@departmentName);";
+                cmd.Parameters.AddWithValue("departmentName", departmentName);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }

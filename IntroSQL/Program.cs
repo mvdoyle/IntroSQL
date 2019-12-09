@@ -17,6 +17,12 @@ namespace IntroSQL
 
             var repo = new DepartmentRepository(connString);
 
+            Console.WriteLine("Type a new Department name");
+
+            var newDepartment = Console.ReadLine();
+
+            repo.InsertDepartment(newDepartment);
+
             var departments = repo.GetAllDepartments();
 
             foreach(var dept in departments)
@@ -24,21 +30,10 @@ namespace IntroSQL
                 Console.WriteLine(dept.Name);
             }
 
-            Console.WriteLine("Would you like to do?");
-            var response = "";
+            
 
-            do
-            {
-                Console.WriteLine("Please type one of the following choices:");
-                Console.Write("||Insert | Update | Delete || Departments");
-                response = Console.ReadLine();
-
-            } while (response.ToUpper() != "INSERT" || response.ToUpper() != "UPDATE" || response.ToUpper() != "DELETE");
-
-            if(response == "INSERT")
-            {
-
-            }
+            
+            
         }
     }
 }
