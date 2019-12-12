@@ -18,10 +18,7 @@ namespace IntroSQL
 
         public IEnumerable<Department> GetAllDepartments()
         {
-            using (var conn = _connection)
-            {
-                return conn.Query<Department>("SELECT * FROM Departments;").ToList();
-            }
+            return _connection.Query<Department>("SELECT * FROM Departments;");
         }
 
         public void InsertDepartment(string departmentName)
