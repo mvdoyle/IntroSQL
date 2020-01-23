@@ -23,10 +23,7 @@ namespace IntroSQL
 
         public void InsertDepartment(string departmentName)
         {
-            using (var conn = _connection)
-            {
-                conn.Execute("INSERT INTO DEPARTMENTS (Name) VALUES (@departmentName);", new { departmentName = departmentName});
-            }
+                _connection.Execute("INSERT INTO DEPARTMENTS (Name) VALUES (@departmentName);", new { departmentName = departmentName});
         }
     }
 }
