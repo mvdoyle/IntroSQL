@@ -17,8 +17,12 @@ namespace IntroSQL
                 .AddJsonFile("appsettings.json")
                 .Build();
 
+            //get the connection string value from the JSON key value pair
             var connString = config.GetConnectionString("DefaultConnection");
 
+
+            //-------------------------------IoC-------------------------------
+            //container to implement IoC
             var container = new Container(x =>
             {
                 x.AddTransient<IDbConnection>((c) =>
@@ -30,12 +34,23 @@ namespace IntroSQL
 
             });
 
-            var repo = container.GetService<IDepartmentRepository>();
-            
+            //var repo = container.GetService<IDepartmentRepository>();
+            /*-------------------------------IoC Ends----------------------------*/
 
-            //var repo = new DepartmentRepository(connString); //Without Dapper
 
-            //var repo = new DapperDepartmentRepository(conn);
+            //-------------------------------Without Dapper------------------------
+            //
+            // IDbConnection conn = new MySqlConnection(connString);
+            // var repo = new DepartmentRepository(conn);
+            //
+            // ----------------------------Without Dapper Ends-------------------*/
+
+
+            //-------------------------------Dapper--------------------------------
+            IDbConnection conn = new MySqlConnection(connString);
+            var repo = new DapperDepartmentRepository(conn);
+            //-----------------------------Dapper Ends-----------------------------
+
 
             //Console.WriteLine("Type a new Department name");
 
