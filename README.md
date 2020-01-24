@@ -1,6 +1,6 @@
 # IntroSQL
-Console Application that connects to a MySql Database showing different methods:
-IoC
+Console Application that connects to a MySql Database showing 3 different methods:
+IoC using a container
 Dapper ORM
 MySqlConnection
 
