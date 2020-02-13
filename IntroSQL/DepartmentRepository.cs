@@ -29,7 +29,7 @@ namespace IntroSQL
                 while (reader.Read() == true)
                 {
                     var currentDepartment = new Department();
-                    currentDepartment.ID = (int)reader["DepartmentID"];
+                    currentDepartment.DepartmentID = (int)reader["DepartmentID"];
                     currentDepartment.Name = (string)reader["Name"];
 
                     allDepartments.Add(currentDepartment);
@@ -55,7 +55,7 @@ namespace IntroSQL
 
                 while (reader.Read() == true)
                 {
-                    department.ID = (int)reader["DepartmentID"];
+                    department.DepartmentID = (int)reader["DepartmentID"];
                     department.Name = (string)reader["Name"];
                 }
 

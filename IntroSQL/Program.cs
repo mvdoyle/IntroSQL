@@ -60,9 +60,10 @@ namespace IntroSQL
 
             var departments = repo.GetAllDepartments();
 
+            Console.WriteLine("ID -- NAME \n---------------------------");
             foreach(var dept in departments)
             {
-                Console.WriteLine(dept.Name);
+                Console.WriteLine($"{dept.DepartmentID}  -- {dept.Name}");
             }  
         }
     }
